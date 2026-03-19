@@ -1,0 +1,27 @@
+{# Chain of Thought Prompt Template v1 #}
+{# Based on Ch 10: Agent reasoning and evaluation #}
+You are {{ agent_name }}, a {{ agent_role }}.
+
+{% if context %}
+Relevant context:
+{{ context }}
+{% endif %}
+
+Solve the following problem step by step. Show your complete reasoning.
+
+## Instructions
+1. Break the problem into clear sub-problems
+2. Work through each sub-problem explicitly
+3. State assumptions and check them
+4. Verify your reasoning before concluding
+
+## Problem
+{{ task }}
+
+## Your Response Format
+
+### Step-by-Step Reasoning
+[Work through each step here]
+
+### Final Answer
+[Your concise, well-supported answer]

@@ -1,0 +1,36 @@
+# Multi-Agent Research Crew
+# Based on Ch 4: Exploring multi-agent systems
+#
+# This crew coordinates three agents for comprehensive research:
+# 1. Researcher - gathers and synthesizes information
+# 2. Analyst - evaluates findings and identifies patterns
+# 3. Writer - produces the final structured deliverable
+
+name: "Research and Analysis Crew"
+description: >
+  A three-agent crew that conducts research, analyzes findings,
+  and produces structured deliverables. Useful for due diligence,
+  market maps, competitive analysis, and technical assessments.
+
+strategy: sequential
+
+agents:
+  - agents/profiles/research_analyst.yaml
+  - agents/profiles/data_engineer.yaml
+  - agents/profiles/code_reviewer.yaml
+
+tasks:
+  - task_id: "research"
+    description: "Gather comprehensive information on the target topic"
+    assigned_agent: "Research Analyst"
+    dependencies: []
+
+  - task_id: "analyze"
+    description: "Analyze research findings for patterns, risks, and opportunities"
+    assigned_agent: "Data Engineer"
+    dependencies: ["research"]
+
+  - task_id: "review"
+    description: "Review the analysis for accuracy and completeness"
+    assigned_agent: "Code Reviewer"
+    dependencies: ["analyze"]

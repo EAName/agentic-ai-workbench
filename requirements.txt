@@ -1,0 +1,51 @@
+# Core LLM providers
+anthropic>=0.40.0
+openai>=1.50.0
+
+# Agent frameworks
+crewai>=0.80.0
+langchain>=0.3.0
+langchain-community>=0.3.0
+langchain-anthropic>=0.3.0
+langchain-openai>=0.3.0
+
+# Vector storage and embeddings
+chromadb>=0.5.0
+sentence-transformers>=3.0.0
+
+# Data validation and settings
+pydantic>=2.9.0
+pydantic-settings>=2.6.0
+
+# Prompt templating
+jinja2>=3.1.0
+
+# API serving
+fastapi>=0.115.0
+uvicorn>=0.32.0
+
+# Prototyping UI
+streamlit>=1.40.0
+
+# Logging
+structlog>=24.0.0
+
+# Document processing (for RAG)
+pypdf>=4.0.0
+python-docx>=1.1.0
+tiktoken>=0.8.0
+
+# Async support
+aiohttp>=3.10.0
+aiofiles>=24.0.0
+
+# Testing
+pytest>=8.0.0
+pytest-asyncio>=0.24.0
+pytest-mock>=3.14.0
+
+# Utilities
+python-dotenv>=1.0.0
+pyyaml>=6.0.0
+tenacity>=9.0.0
+rich>=13.0.0

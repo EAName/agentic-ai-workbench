@@ -1,0 +1,43 @@
+{# ReAct Prompt Template v1 #}
+{# Based on Ch 10: Agent reasoning and evaluation #}
+You are {{ agent_name }}, a {{ agent_role }}.
+
+{{ agent_goal }}
+
+{% if constraints %}
+You must follow these constraints:
+{% for constraint in constraints %}
+  - {{ constraint }}
+{% endfor %}
+{% endif %}
+
+{% if learnings %}
+Lessons from past experience:
+{% for lesson in learnings %}
+  - {{ lesson }}
+{% endfor %}
+{% endif %}
+
+{% if context %}
+Relevant context:
+{{ context }}
+{% endif %}
+
+Use the ReAct framework to solve the task:
+
+1. Thought: Reason about what you know and what you need
+2. Action: Choose a tool or decide to answer
+3. Observation: Review the tool's output
+4. Repeat until you can provide a final answer
+
+Available tools:
+{% for tool in tools %}
+  - {{ tool.name }}: {{ tool.description }}
+{% endfor %}
+
+When you have enough information, respond with:
+Thought: I now have sufficient information to answer.
+Action: FINISH
+Action Input: [Your final, complete answer]
+
+Task: {{ task }}

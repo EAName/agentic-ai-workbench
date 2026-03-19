@@ -1,0 +1,48 @@
+# Research Flow Definition
+# Based on Ch 9: Mastering agent prompts with prompt flow
+#
+# A prompt flow chains multiple prompt steps together,
+# where the output of one step feeds the next.
+
+name: "Deep Research Flow"
+description: >
+  Multi-step research flow that gathers information, analyzes it,
+  and produces a structured deliverable. Each step uses a different
+  prompt strategy optimized for that phase.
+
+steps:
+  - name: "gather"
+    description: "Gather raw information on the topic"
+    prompt_template: "react_prompt.jinja2"
+    reasoning_pattern: "react"
+    tools:
+      - web_search
+      - read_file
+    output_key: "raw_research"
+
+  - name: "analyze"
+    description: "Analyze gathered information for patterns and insights"
+    prompt_template: "cot_prompt.jinja2"
+    reasoning_pattern: "chain_of_thought"
+    input_keys:
+      - "raw_research"
+    output_key: "analysis"
+
+  - name: "evaluate"
+    description: "Evaluate the analysis quality"
+    prompt_template: "evaluation_prompt.jinja2"
+    reasoning_pattern: "evaluation"
+    input_keys:
+      - "analysis"
+    rubric: "research"
+    output_key: "evaluation"
+
+  - name: "refine"
+    description: "Refine based on evaluation feedback"
+    prompt_template: "cot_prompt.jinja2"
+    reasoning_pattern: "chain_of_thought"
+    input_keys:
+      - "analysis"
+      - "evaluation"
+    output_key: "final_output"
+    condition: "evaluation.percentage < 80"

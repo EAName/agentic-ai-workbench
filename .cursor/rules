@@ -1,0 +1,73 @@
+# Agentic AI Workbench - Cursor Rules
+# Based on: AI Agents in Action by Micheal Lanham
+# Owner: Edwin Salguero, Parallel LLC
+
+## Project Context
+This is a production-grade agentic AI development workbench. It implements
+the core frameworks from "AI Agents in Action": agent profiles, tool use,
+memory/knowledge (RAG), reasoning (ReAct, CoT, Tree of Thought), planning
+(sequential/stepwise), evaluation, feedback loops, behavior trees, and
+multi-agent orchestration.
+
+## Architecture Principles
+- Every agent has a PROFILE (persona + goals + constraints)
+- Every agent has MEMORY (conversational, semantic, episodic, procedural)
+- Every agent has TOOLS (actions it can take on the outside world)
+- Every agent has REASONING (how it thinks through problems)
+- Every agent has PLANNING (how it sequences actions)
+- Every agent has EVALUATION (how it scores its own output)
+- Every agent has FEEDBACK (how it improves over time)
+
+## Code Standards
+- Python 3.11+ with type hints on all functions
+- Use pydantic for all data models and configs
+- Use async/await for all LLM calls and I/O
+- Environment variables for all secrets (never hardcode API keys)
+- All agents must be testable with mock LLM responses
+- Use structured logging (structlog) not print statements
+- No em dashes in any output or documentation
+
+## File Organization
+- agents/profiles/ -> YAML agent profile definitions
+- agents/tools/ -> Tool implementations agents can use
+- agents/actions/ -> Complex action sequences
+- memory/ -> RAG, vector stores, memory compression
+- reasoning/ -> ReAct loops, CoT chains, evaluation rubrics
+- planning/ -> Sequential and stepwise planners
+- multiagent/ -> CrewAI and custom orchestration
+- prompts/ -> Prompt templates, flows, personas
+- config/ -> Environment and model configuration
+- tests/ -> Mirrors src structure with test_ prefix
+
+## Naming Conventions
+- Agent profiles: snake_case.yaml (e.g., research_analyst.yaml)
+- Python modules: snake_case.py
+- Classes: PascalCase
+- Constants: UPPER_SNAKE_CASE
+- Prompt templates: {purpose}_{version}.jinja2
+
+## When Writing Agent Code
+1. Always start with the agent profile YAML
+2. Define tools before writing agent logic
+3. Include evaluation rubrics for any agent output
+4. Add feedback collection to every agent interaction
+5. Use the ReAct loop pattern for complex tasks
+6. Implement memory persistence for long-running agents
+
+## When Debugging
+- Check agent profile constraints first
+- Verify tool permissions and API connectivity
+- Inspect the reasoning trace (ReAct thought/action/observation)
+- Review memory retrieval relevance scores
+- Check planning step completion status
+
+## Dependencies
+- anthropic or openai for LLM access
+- langchain + langchain-community for RAG pipelines
+- chromadb for vector storage
+- crewai for multi-agent orchestration
+- pydantic for data validation
+- jinja2 for prompt templates
+- structlog for logging
+- fastapi + uvicorn for serving agents
+- streamlit for rapid prototyping UI

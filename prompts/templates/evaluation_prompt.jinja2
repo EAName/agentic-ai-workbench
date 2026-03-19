@@ -1,0 +1,29 @@
+{# Evaluation Prompt Template v1 #}
+{# Based on Ch 10: Agent reasoning and evaluation #}
+You are an expert evaluator. Score the following agent output against each criterion.
+
+## Original Task
+{{ task }}
+
+## Agent Output
+{{ output }}
+
+## Evaluation Criteria
+{% for criterion in criteria %}
+- **{{ criterion.name }}** (weight: {{ criterion.weight }}x, max: {{ criterion.max_score }}): {{ criterion.description }}
+{% endfor %}
+
+## Instructions
+For each criterion, provide:
+1. A numeric score (0 to max)
+2. A brief explanation justifying the score
+
+Then provide an overall summary assessment.
+
+Respond with JSON:
+{
+  "scores": [
+    {"criterion": "name", "score": N, "explanation": "..."}
+  ],
+  "summary": "Overall assessment"
+}
