@@ -187,3 +187,15 @@ The repository is organized by capability layer:
 | Prompt Engineering | Ch 9 | prompts/ |
 | Reasoning/Evaluation | Ch 10 | reasoning/ |
 | Planning/Feedback | Ch 11 | planning/ |
+
+---
+
+## Related projects
+
+| Project | Description |
+|---------|-------------|
+| [ParallelLLC/SOUS](https://github.com/ParallelLLC/SOUS) | Domain-specific production pipeline built on workbench patterns: five-agent vulnerability triage with deterministic LLM fallback and POAM exports |
+| [EAName/mango-tango-cli](https://github.com/EAName/mango-tango-cli) | Civic analytics CLI with burst detection and attribution (CIB Mango Tree) |
+| [EAName/Segmentation](https://github.com/EAName/Segmentation) | SAM 2 segmentation research with few-shot and zero-shot evaluation |
+
+**Parallel LLC** uses this workbench as the general agent layer; **SOUS** is the regulated-security vertical shipped from the same engineering lineage.
